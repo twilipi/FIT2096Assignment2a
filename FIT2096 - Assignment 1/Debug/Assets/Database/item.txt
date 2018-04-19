@@ -1,0 +1,12 @@
+sword	item	5	0	0	0	
+spoon	item	2	0	0	0	
+pistol	item	8	0	0	0	
+paper	item	0	2	0	0	
+shield	item	0	10	0	0	
+potion	item	0	0	0	50	
+poison	item	0	0	0	-10	
+running shoe	item	0	0	10	0		
+master sword	item	100	0	0	0	
+master shield	item	0	100	0	0	
+super potion	item	0	0	0	100	
+lightening shoe	item	0	0	100	0	
