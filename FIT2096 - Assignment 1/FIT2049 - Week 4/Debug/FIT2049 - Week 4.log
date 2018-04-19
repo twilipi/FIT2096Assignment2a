@@ -10,6 +10,7 @@
   InputController.cpp
   GameObject.cpp
   Game.cpp
+<<<<<<< HEAD
 c:\users\bon-itx\desktop\fit2096 - assignment 1 - copy\fit2049 - week 4\game.cpp(782): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Direct3D.cpp
   Camera.cpp
@@ -21,3 +22,15 @@ DirectXTK_VS2015.lib(SimpleMath.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was 
 DirectXTK_VS2015.lib(WICTextureLoader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK_VS2015.lib(WICTextureLoader.obj)' or at 'C:\Users\bon-ITX\Desktop\FIT2096 - Assignment 1 - Copy\Debug\DirectXTK.pdb'; linking object as if no debug info
   FIT2049 - Week 4.vcxproj -> C:\Users\bon-ITX\Desktop\FIT2096 - Assignment 1 - Copy\Debug\FIT2096 - Assignment 1.exe
   FIT2049 - Week 4.vcxproj -> C:\Users\bon-ITX\Desktop\FIT2096 - Assignment 1 - Copy\Debug\FIT2096 - Assignment 1.pdb (Full PDB)
+=======
+y:\fit2096 - assignment 1\fit2049 - week 4\game.cpp(782): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Direct3D.cpp
+  Camera.cpp
+y:\fit2096 - assignment 1\fit2049 - week 4\camera.cpp(18): warning C4305: '=': truncation from 'double' to 'float'
+  Generating Code...
+y:\fit2096 - assignment 1\fit2049 - week 4\game.cpp(914): warning C4715: 'Game::Battle': not all control paths return a value
+DirectXTK_VS2015.lib(pch.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK_VS2015.lib(pch.obj)' or at 'Y:\FIT2096 - Assignment 1\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK_VS2015.lib(SimpleMath.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK_VS2015.lib(SimpleMath.obj)' or at 'Y:\FIT2096 - Assignment 1\Debug\DirectXTK.pdb'; linking object as if no debug info
+DirectXTK_VS2015.lib(WICTextureLoader.obj) : warning LNK4099: PDB 'DirectXTK.pdb' was not found with 'DirectXTK_VS2015.lib(WICTextureLoader.obj)' or at 'Y:\FIT2096 - Assignment 1\Debug\DirectXTK.pdb'; linking object as if no debug info
+  FIT2049 - Week 4.vcxproj -> Y:\FIT2096 - Assignment 1\Debug\FIT2096 - Assignment 1.exe
+>>>>>>> master

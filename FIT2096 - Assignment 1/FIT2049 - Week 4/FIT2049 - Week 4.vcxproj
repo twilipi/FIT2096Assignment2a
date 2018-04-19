@@ -14,7 +14,10 @@
     <ProjectGuid>{2E0BCA67-9DB0-4440-9AD3-F453E7D2C04A}</ProjectGuid>
     <RootNamespace>FIT2049Week3Solution</RootNamespace>
     <ProjectName>FIT2096 - Assignment 1</ProjectName>
+<<<<<<< HEAD
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+=======
+>>>>>>> master
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
