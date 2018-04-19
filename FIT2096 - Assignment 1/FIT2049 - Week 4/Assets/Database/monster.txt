@@ -1,0 +1,6 @@
+Monster A	enemy	3	3	2	10  
+Monster B	enemy	5	4	4	20
+Monster C	enemy	8	10	8	30
+Monster D	enemy	12	10	10	40
+Monster E	enemy	20	20	15	50
+Monster F	enemy	30	30	20	60	
