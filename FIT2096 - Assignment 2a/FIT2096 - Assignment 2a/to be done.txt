@@ -1,0 +1,6 @@
+1. change walking behaviour
+2. change the code of the battle into switch form
+3. migrate the player and enemy to a new object
+4. set enemy behaviour
+5. change the item and enemy into object form (that makes another array--array of enum to manage this)
+6. make first person camera
