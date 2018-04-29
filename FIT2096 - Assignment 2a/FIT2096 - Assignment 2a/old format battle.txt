@@ -1,0 +1,161 @@
+//initialize the counters, input value, array for managing rotation, some calculating var.
+	int battleCounter = 0;
+	GameObject* battleRotate[2];
+	int battleCommand[2] = { 0,0 };
+	bool battleLoop = true; //the boolean for breaking the loop
+	int inInt;
+	int attackerPt;
+	int attackerSpeed;
+	int defenderPt;
+	int defenderSpeed;
+
+	//check player and the enemy's speed to determine who goes first
+	if (player->getSpeed() >= enemy->getSpeed()) {
+		battleRotate[0] = player;
+		battleRotate[1] = enemy;
+	}
+	else {
+		battleRotate[0] = enemy;
+		battleRotate[1] = player;  
+	}
+
+	//start loop till one of it has no more HP
+	while (battleLoop) {
+		//set up values
+		battleCounter = battleCounter % 2;
+		attackerPt = battleRotate[battleCounter]->getAtk();
+		defenderPt = battleRotate[(battleCounter + 1) % 2]->getDef();
+		attackerSpeed = battleRotate[battleCounter]->getSpeed();
+		defenderSpeed = battleRotate[(battleCounter + 1) % 2]->getSpeed() / 4+1;
+		srand(time(NULL));
+
+		//clear screen and display the current status of player and enemy
+		system("cls");
+		cout << enemy->displayStatus() << "\n\n\t\t\tVS\n\n" << player->displayStatus() << "\nAuto Battle:please wait until someone is defeated\n";
+		Sleep(500);
+		cout << "it's " << battleRotate[battleCounter]->getName() << "'s turn!\n";
+		//if the index is a player, ask the player for the command
+		//no one can tell me how to do a non-real time read line changed to random.
+		if (battleRotate[battleCounter]->getAttr() == "player") {
+			//object can attack(1), random attack - random defence
+			//player can also do defence(2), defence doubled in 1 turn
+			//or standby(3), speed doubled in 1 turn
+			//ask player for command
+			// "what would you like to do?\n1:attack(attack to enemy)\n2:defence(not attack but boost your defence 150% in 1 turn)\n3:standby(not attack but boost your evade speed 150% in 1 turn)\nPlease choose your choice by entering the number then press enter/return: 
+			//cout << "256";
+			//cin >> inInt;
+			//cout << inInt;
+			//while (
+			//	cout <<"123" &&
+			//	(!(cin>>inInt) || (inInt < 1) || (inInt > 3))) {
+			//	cin.clear();
+			//	cin.ignore(numeric_limits<streamsize>::max(),'\n');
+			//	cout << "\nThe input is invalid, please try again and make sure those number are around 1-3.\n\n";
+			//	system("pause");
+			//}
+			/*			//prepare for getting the value
+			int inInt=0;
+			m_input->clearCurrentKey();
+			m_input->inputStringReady = false;
+			m_input->clearInString();
+			//ask player for the value
+			cout << "what would you like to do?\n1:attack(attack to enemy)\n2:defence(not attack but boost your defence 150% in 1 turn)\n3:standby(not attack but boost your evade speed 150% in 1 turn)\nPlease choose your choice by entering the number then press enter/return: ";
+			//don't stop infinite loop till it got a valid input
+			while (true) {
+				m_input->BeginUpdate();
+				//if the string is ready(by typing enter), start check the string is valid or not
+				if (m_input->inputStringReady) {
+					//display the input value
+					cout << m_input->getInString();
+					//check it
+					if (m_input->getInString() == "1" || m_input->getInString() == "2" || m_input->getInString() == "3") {
+						break;
+					}
+					//if not the result, inform player then clear the whole input and try again.
+					else {
+						cout << "\nThe input is invalid, please try again and make sure type number are around 1-3 and press enter.\n\n";
+						m_input->inputStringReady = false;
+						m_input->clearInString();
+						cout << "what would you like to do?\n1:attack(attack to enemy)\n2:defence(not attack but boost your defence 150% in 1 turn)\n3:standby(not attack but boost your evade speed 150% in 1 turn)\nPlease choose your choice by entering the number then press enter/return: ";
+					}
+				}
+			}
+			inInt = stoi(m_input->getInString());
+ */
+			inInt = rand() % 3 + 1;
+		}
+		//if it is not a player, just random choose the command
+		else {
+
+			inInt = rand() % 3 + 1;
+		}
+		Sleep(500);
+
+		//save the command for next turn
+		battleCommand[battleCounter] = inInt;
+
+		//if the candidate attacks
+		if (inInt == 1) {
+			//display the action
+			cout << battleRotate[battleCounter]->getName() << " attacks " << battleRotate[(battleCounter + 1) % 2]->getName() << "!\n";
+			Sleep(500);
+			//then check the opponent's action to determine the damage calculation
+
+			//if opponent choose defence
+			if (battleCommand[(battleCounter + 1) % 2] == 2) {
+				//boost its defence 50%
+				defenderPt = defenderPt * 3 / 2;
+			}
+			//choose standby
+			else if (battleCommand[(battleCounter + 1) % 2] == 3) {
+				//boost its speed 50%
+				defenderSpeed = defenderSpeed * 3 / 2;
+			}
+
+			//check if opponent can evade or not and take damages
+			//can't evade
+			if (rand() % attackerSpeed + 1 > rand() % defenderSpeed + 1) {
+				//start damage calculation
+				int damage = rand() % attackerPt - rand() % defenderPt;
+				if (damage < 0) { damage = 0; }
+				else {
+					battleRotate[(battleCounter + 1) % 2]->changeHP(-damage);
+				}
+				cout << battleRotate[(battleCounter + 1) % 2]->getName() << " takes " << damage << " damage!\n";
+			}
+			//can evade
+			else {
+				cout << battleRotate[(battleCounter + 1) % 2]->getName() << " evades the attack!\n";
+			}
+
+
+
+		}
+		//defence
+		else if (inInt == 2) {
+			cout << battleRotate[battleCounter]->getName() << " chooses to defend himself!\n";
+			Sleep(500);
+		}
+		//standby
+		else if (inInt == 3) {
+			cout << battleRotate[battleCounter]->getName() << " chooses to aware himself!\n";
+			Sleep(500);
+		}
+
+		//check the HP for the opponent, if it's zero, halt the loop.
+		if (battleRotate[(battleCounter + 1) % 2]->getHP() <= 0) {
+			battleLoop = false;
+		}
+		battleCounter++;
+		Sleep(1000);
+	}
+
+	//check who is defeated
+	if (enemy->getHP() <= 0) {
+		return true;
+	}
+	else if (player->getHP() <= 0) {
+		return false;
+	}
+
+	//return true;

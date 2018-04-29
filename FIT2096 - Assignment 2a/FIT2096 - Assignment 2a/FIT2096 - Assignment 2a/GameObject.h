@@ -9,7 +9,8 @@
 #include <sstream>
 #include <vector>
 #include <ctime>
-
+#include <math.h>       /* acos */
+# define M_PI           3.14159265358979323846  /* pi */
 
 using namespace std;
 
@@ -31,8 +32,12 @@ private:
 
 	//3D positioning/rotating/scaling/rendering stuff
 	Vector3 m_position;//positions for the object
-	float m_rotX, m_rotY, m_rotZ;//rotation of the object(actually isn't do matter in this game...?)
+	float m_rotX, m_rotY, m_rotZ;//rotation of the object
 	float m_scaleX, m_scaleY, m_scaleZ;//scale of the object (but the assignment doesn't matter at all
+
+	float m_heading = 0.0f;
+	float m_pitch = 0.0f;
+
 	float m_moveSpeed;//moving speed
 	float m_rotateSpeed;//rotation speed
 	Matrix m_world;//???
@@ -48,14 +53,16 @@ public:
 	//static variable/const
 	/*
 		m_enemyNumbers : check the number of the enemy(if all enemy is unavailiable, the game stops)
-		m_posBoarderX, m_posBoarderY : the constant value of the game world can go for
 		m_wrapList: a list of vector3 for wraping
 		m_lastWrap: the status of last wrapped location
+		m_playerPosition: the currentPosition of player
 	*/
 	int static m_enemyNumbers;
 	float static mapSize;
 	vector<Vector3> static m_warpList;
 	Vector3 static m_lastWarp;
+	Vector3 static m_playerPosition;
+
 
 	//constructor and destructor
 	GameObject(Mesh* mesh, Shader* shader, InputController* input, Vector3 position);

@@ -186,6 +186,8 @@ void Window::Start()
 				framesSimulated++;
 				m_game->Update(timeStep);
 
+
+
 				timeBank -= timeStep;
 			}
 
@@ -261,21 +263,60 @@ LRESULT CALLBACK Window::MessageProc(HWND hWnd, UINT message, WPARAM wParam, LPA
 			m_input->inputStringReady = true;
 			OutputDebugString(" enter Key was pressed\n");
 		}
-		//else if (wParam == '1') {
-		//	m_input->setInputInteger(2);
-		//}
-		//else if (wParam == '2') {
-		//	m_input->setInputInteger(2);
-		//}
-		//else if (wParam == '3') {
-		//	m_input->setInputInteger(2);
-		//}
+		else if (wParam == '1') {
+			OutputDebugString("1 was pressed\n");
+		}
 		else {
 			m_input->concatInString(static_cast<char>(wParam));
 			OutputDebugString("other Key was pressed\n");
 		}
 		return 0;
 	case WM_CLOSE:
+		PostQuitMessage(0);
+		return 0;
+
+	case WM_LBUTTONDOWN:
+		m_input->SetMouseDown(LEFT_MOUSE);
+		return 0;
+
+	case WM_LBUTTONUP:
+		m_input->SetMouseUp(LEFT_MOUSE);
+		return 0;
+
+	case WM_RBUTTONDOWN:
+		m_input->SetMouseDown(RIGHT_MOUSE);
+		return 0;
+
+	case WM_RBUTTONUP:
+		m_input->SetMouseUp(RIGHT_MOUSE);
+		return 0;
+
+	case WM_MBUTTONDOWN:
+		m_input->SetMouseDown(MIDDLE_MOUSE);
+		return 0;
+
+	case WM_MBUTTONUP:
+		m_input->SetMouseUp(MIDDLE_MOUSE);
+		return 0;
+
+	case WM_INPUT:
+	{
+		UINT dwSize = 40;
+		static BYTE lpb[40];
+		memset(&lpb, 0, sizeof(lpb));
+		GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUTHEADER));
+		RAWINPUT* input = (RAWINPUT*)lpb;
+
+		if (input->header.dwType == RIM_TYPEMOUSE)
+		{
+			m_input->SetMouseDeltaX(input->data.mouse.lLastX);
+			m_input->SetMouseDeltaY(input->data.mouse.lLastY);
+			OutputDebugString("mouse hovering\n");
+		}
+		return 0;
+	}
+
+	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
 	default:

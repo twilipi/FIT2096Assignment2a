@@ -29,6 +29,16 @@ public:
 		return value1 + (value2 - value1) * amount;
 	}
 
+	static float Clamp(float value, float min, float max)
+	{
+		if (value > max)
+			return max;
+		else if (value < min)
+			return min;
+		else
+			return value;
+	}
+
 };
 
 #endif

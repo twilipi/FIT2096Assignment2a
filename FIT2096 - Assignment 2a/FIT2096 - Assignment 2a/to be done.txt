@@ -1,6 +1,23 @@
-1. change walking behaviour
-2. change the code of the battle into switch form
-3. migrate the player and enemy to a new object
-4. set enemy behaviour
-5. change the item and enemy into object form (that makes another array--array of enum to manage this)
-6. make first person camera
+1. change walking behaviour <--done
+2. change the code of the battle into switch form<--done
+	2.1 can implement the user input<--done
+3. migrate the player and enemy to a new object<--give up
+	3A. migrate item/warp/enemy/wall into an independent object matrix with its own mesh<--done
+4. set enemy behaviour<--done, using non-dot product/cross product to finish it
+5. change the item and enemy into object form (that makes another array--array of enum to manage this)<--done
+6. make first person camera<--
+7. set sprites(HP bar, player score)
+
+
+item/enemy placing strategy:
+method1: use a 2D array to store the pointers of it, when player reached the grid, will trigger itself.
+	pros:easy to react/process in that matrix map
+	cons:less flexibility
+method2: use a vector to store the pointers of it, and keep track the distance
+	pros and cons are the opposite of method 1
+
+
+1. how to rotate by another vector?<--solved(27/4)
+2. setting up mouse hovering rotation for FPS camera<--finish but with bug(30/4)
+3. sprites(how health bar works)<--done
+4. shaders<--no meaning since check the code....or better ask chris on thursday.

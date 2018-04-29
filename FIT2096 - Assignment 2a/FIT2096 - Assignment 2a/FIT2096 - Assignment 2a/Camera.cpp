@@ -9,8 +9,8 @@
 Camera::Camera()
 {
 	//Set up a "default" camera!
-	m_position = Vector3(0.0f, 5.0f, -25.0f);
-	//m_position = Vector3(0.0f, 5.0f, -5.0f);
+	//m_position = Vector3(0.0f, 5.0f, -60.0f);
+	m_position = Vector3(0.0f, 8.0f, -5.0f);
 	m_lookAtTarget = Vector3::Zero;
 	m_up = Vector3::Up;
 

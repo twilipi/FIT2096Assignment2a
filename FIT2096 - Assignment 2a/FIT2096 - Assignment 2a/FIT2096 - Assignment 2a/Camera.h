@@ -51,6 +51,8 @@ public:
 	Matrix GetView() { return m_view; }
 	Matrix GetProjection() { return m_projection; }
 
+	Vector3 GetPosition() { return m_position; }
+
 	virtual void Update(float timestep);	//The Update method is used to recalculate the matrices, however later on we could use it to move the camera around
 											//This is why it is virtual and why it receives the timestep as a parameter
 //	void Camera::Update(float timestep, Vector3 currentLocation)
